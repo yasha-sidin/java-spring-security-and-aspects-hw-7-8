@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://snipp.ru/cdn/bootstrap/4.3/bootstrap.min.css">
+</head>
+<body>
+    <h1>Profile</h1>
+    <div th:object="${user}">
+        <table>
+            <thead>
+            <tr>
+                <th>Login</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Age</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="*{username}"></td>
+                <td th:text="*{firstname}"></td>
+                <td th:text="*{lastname}"></td>
+                <td th:text="*{age}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:switch="*{contains('MANAGER')}">
+            <p th:case="true"><a href="http://localhost:8080/manager/users">Manage users</a></p>
+            <p><a href="http://localhost:8080/">Home</a></p>
+        </div>
+    </div>
+</body>
+</html>
